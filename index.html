@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>test</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Grid</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div style="padding-top:100px;display:flex;justify-content:center;">
+		<table id="grid">
+			<!-- Các ô của bảng sẽ được tạo ra bằng JavaScript -->
+		</table>
+	</div>
+	<div style="display:flex;justify-content:center;padding-top:20px">
+		<button onclick="createNewBoard()" style="font-size:20px;font-weight:700">Tạo bảng mới</button>
+	</div>
+    <script>
+        function createNewBoard() {
+            var table = document.getElementById('grid');
+            
+
+            var colors = ['red', '#31baa0'];
+            var arrayLabel = [
+                [1, 5, 9, 13, 17],
+                [2, 6, 10, 14, 18],
+                [3, 7, 11, 15, 19],
+                [4, 8, 12, 16, 20],
+            ];
+            var redCount = 0;
+            var greenCount = 0;
+	    for(var kk=0;kk<10000000;kk++) {
+	    	   table.innerHTML = ''; // Xóa bảng hiện tại
+	    	    redCount = 0;
+            	    greenCount = 0;
+		    for (var i = 0; i < 4; i++) {
+		        var row = table.insertRow(i);
+		        for (var j = 0; j < 5; j++) {
+		            var color = colors[Math.floor(Math.random() * colors.length)];
+			    var cell = row.insertCell(j);
+		            cell.textContent = arrayLabel[i][j];
+						cell.style.fontSize = "30px";
+						cell.style.fontWeight = "700";
+						cell.style.color = "white";
+						cell.style.width = "50px";
+						cell.style.height = "50px";
+		            cell.style.backgroundColor = color;
+		            
+		        }
+		    }
+
+		    if (Math.random() > Math.random()) {
+		    	break;
+		    }
+            }
+        }
+        // Tạo bảng ban đầu
+        createNewBoard();
+    </script>
+</body>
+</html>
